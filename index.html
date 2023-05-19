@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>祝我的宝宝520快乐</title>
+	<style>
+		/*星空背景的属性配置*/
+		body  {
+			background-color: black;
+			
+		}
+		
+		h1{
+			text-align: center;
+			color: white;
+			font-size: 25px;
+			font-family: Arial, sans-serif;
+		}
+		
+		
+		.lianjie{
+			display: flex;
+  justify-content: center;
+  align-items: center;
+		}
+		.lianjie{
+			position: relative;
+		}
+		
+		a{		
+ position: absolute;
+  left: 15%;
+  top: 85%;
+  transform: translate(-50%, -50%);
+		}
+		
+		
+		
+		h2{
+			font-size: 20px;
+			color: white;
+			font-family: Arial, sans-serif;
+			float: inherit;
+			text-align: center;
+		}
+		
+			
+		
+		canvas {
+			position: absolute;
+			top: 0;
+			left: 0;
+			z-index: -1;
+		}
+		#music {
+			margin-top: 20px;
+		}
+		/*爱心元素的属性配置*/
+		.heart {
+			position: absolute;
+			width:50px;
+			height:50px;
+			background-color: red;
+			transform: rotate(45deg);
+			animation: heartbeat 1s ease-in-out infinite;
+		}
+		.heart:before,
+		.heart:after {
+			content: "";
+			position: absolute;
+			background-color: red;
+		}
+		.heart:before {
+			width: 50px;
+			height: 50px;
+			border-radius: 50% 50% 0 0;
+			top: -25px;
+			left: 0;
+		}
+		.heart:after {
+			width: 50px;
+			height: 50px;
+			border-radius: 50% 50% 0 0;
+			top: 0;
+			left: 25px;
+		}
+		.heart.right {
+			right: 50px;
+		}
+		.heart.left {
+			left: 50px;
+		}
+		@keyframes heartbeat {
+			0% {
+				transform: scale(1);
+			}
+			50% {
+				transform: scale(1.3);
+			}
+			100% {
+				transform: scale(1);
+			}
+		}
+		
+		
+		/*轮播图片的属性配置*/
+		.container {
+			width: 30%;
+			height: 530px;
+			position: relative;
+			overflow: hidden;
+			top: 5px;
+			left:530px;
+	
+		}
+		.container img {
+			width: 100%;
+			height: 100%;
+			position: absolute;
+			top: 0;
+			left: 0;
+			opacity: 0;
+			transition: opacity 1s ease-in-out;
+		}
+		.container img.active {
+			opacity: 1;
+		}
+		
+		.alert{
+			margin: 150px 200px 50px 600px;
+			float: left;
+			position:absolute;
+			top: 10px;
+			left:500px;
+			color: aqua;
+			
+			
+		}
+		
+		
+		
+		@keyframes typing {
+			from {
+				width: 0%;
+			}
+			to {
+				width: 100%;
+			}
+		}
+		
+		/* 将动画应用于文本元素 */
+		h3 span {
+			display: inline-block;
+			overflow: hidden;
+			white-space: nowrap;
+			animation: typing 50s linear;
+			font-size: 17px;
+			font-family:"楷体";
+			position: fixed;
+			
+		}
+		
+		
+		.text1{
+			color:#A29720;
+			width: 0%;
+			height: 500px;
+			overflow: hidden;
+			margin: 150px 200px 50px 600px;
+			position: fixed;
+			top: 200px;
+			left:450px;
+		}
+		
+		
+		.text2{
+			color:#A29720;
+			width: 0%;
+			height: 500px;
+			overflow: hidden;
+			margin: 150px 600px 50px 10px;
+			position: fixed;
+			top: 200px;
+			right:800px;
+		}
+		
+	</style>
+	
+	
+</head>
+<body>
+	<canvas id="canvas"></canvas>
+	<h1>♥宝宝今天是520哦♥</h1>
+	
+	<!--音乐播放-->
+<!--<audio id="music" src="music/Falling _You.mp3"   controls loop ></audio><!--控制台手动播放音乐-->
+	
+	 <audio autoplay="autopaly">
+      <source src="music/FallingYou.mp3" type="audio/mp3" />
+    </audio>
+	
+<!--<audio autoplay loop>
+	<source src="music/Falling _You.mp3" type="audio/mp3">
+	</audio><!--自动播放音乐-->
+
+	<script>
+		var canvas = document.getElementById('canvas');
+		canvas.width = window.innerWidth;
+		canvas.height = window.innerHeight;
+
+		var ctx = canvas.getContext('2d');
+		var stars = [];
+		var maxStars = 1000;
+
+		function random(min, max) {
+			return Math.random() * (max - min) + min;
+		}
+
+		function Star() {
+			this.x = random(0, canvas.width);
+			this.y = random(0, canvas.height);
+			this.radius = random(1, 3);
+			this.color = 'white';
+		}
+
+		function draw() {
+			ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+			for (var i = 0; i < maxStars; i++) {
+				var star = stars[i];
+				ctx.beginPath();
+				ctx.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
+				ctx.fillStyle = star.color;
+				ctx.fill();
+			}
+
+			requestAnimationFrame(draw);
+		}
+
+		function init() {
+			for (var i = 0; i < maxStars; i++) {
+				stars.push(new Star());
+			}
+
+			draw();
+		}
+
+		init();
+	</script>
+	
+	
+	
+	<!--红色爱心左右一个-->
+	<div class="heart left"></div>
+	<div class="heart right"></div>
+	
+	<h2>最平凡的细水长流，</h2>
+	<h2>也因牵着你的手，而幸福荡漾。</h2>
+	
+	<div class="lianjie">
+		
+	<a href="lovetext.html">想知道更多嘛，吼吼吼点击有惊喜哦！！！</a>
+	</div>
+	
+	<!--轮播图片-->
+	<div class="container">
+		<img src="image/Image 1.jpg" class="active">
+		<img src="image/Image 2.jpg">
+		<img src="image/Image 3.jpg">
+		<img src="image/Image 4.jpg">
+		<img src="image/Image 5.jpg">
+		<img src="image/Image 6.jpg">
+		<img src="image/Image 7.jpg">
+		<img src="image/Image 8.jpg">
+		<img src="image/Image 9.jpg">
+		<img src="image/Image 10.jpg">
+		<img src="image/Image 11.jpg">
+		<img src="image/Image 12.jpg">
+		<img src="image/Image 13.jpg">
+		<img src="image/Image 14.jpg">
+		<img src="image/Image 15.jpg">
+		
+		<img src="image/Image 16.jpg">
+		<img src="image/Image 17.jpg">
+		<img src="image/Image 18.jpg">
+		<img src="image/Image 19.jpg">
+		<img src="image/Image 20.jpg">
+		<img src="image/Image 21.jpg">
+		<img src="image/Image 22.jpg">
+		<img src="image/Image 23.jpg">
+		<img src="image/Image 24.jpg">
+		<img src="image/Image 25.jpg">
+		<img src="image/Image 26.jpg">
+		<img src="image/Image 27.jpg">
+		<img src="image/Image 28.jpg">
+		<img src="image/Image 29.jpg">
+		<img src="image/Image 30.jpg">
+			
+	</div>
+	
+	
+	<h2>小王子说，这个世界有几千几万朵玫瑰，但是只有你这一朵，才是真正属于我的玫瑰，</h2>
+	
+	
+		<!-- alert页面内容 -->
+	<div class="alert">
+	<button style="display: block; margin: 0 auto; float: left;" onclick="alert('哈哈哈surprise，这么快就看完啦宝宝，我可是足足做了好几个小时的封面呢！看完了就可以点击下方蓝色字体的链接来接收你的礼物了哦！')">封面看完以后快快哦点击这里哦</button>
+	</div>
+	
+	<div class="text1">
+	<h3><span>      生活总是充满仪式感的<br>我想用一种最特别的方式去记录我们出现在彼此的生命中<br>我一直很坚定你就是我那个要跟你走到最后的人<br>我也想在你的眼里，无论何时，我都是那个最亮的星星<br>我会陪你一起努力、一起进步、浅浅的说深深的话，<br>慢慢的走长长的路。</span></h3>
+	</div>
+	
+	<div class="text2">
+	<h3><span> "永远"这个词，是不是说起来有些不切实际<br>所以，我在看得见的未来里会一直爱你。<br>时光荏苒，岁月无言，白玫瑰也长出了朱砂点。</span></h3>
+	
+	
+	<script>
+		let images = document.querySelectorAll('.container img');
+		let current = 0;
+		let interval = setInterval(changeImage, 2500);
+
+		function changeImage() {
+			images[current].classList.remove('active');
+			current = (current + 1) % images.length;
+			images[current].classList.add('active');
+		}
+	</script>
+
+	
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
